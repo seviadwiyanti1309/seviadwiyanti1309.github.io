@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Project Details — Sevia Dwi Yanti</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#fdf8f5;
+  --bg:#fff9fc;
+  --pink-light:#fde8ef;
+  --pink:#f4a7c0;
+  --pink-deep:#e07898;
+  --lilac-light:#ede8f9;
+  --lilac:#b9a9e8;
+  --lilac-deep:#8b7ac9;
+  --text:#3a2d35;
+  --muted:#9e8a96;
+  --border:rgba(180,140,165,0.18);
+  --card:rgba(253,232,239,0.35);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--pink),var(--lilac));border-radius:4px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(255,249,252,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;font-weight:500}
+.nav-links a:hover{color:var(--pink-deep)}
+
+/* SECTIONS */
+section{padding:5.5rem 4rem}
+.sec-label{font-size:0.72rem;color:var(--pink-deep);letter-spacing:0.14em;text-transform:uppercase;font-weight:600;margin-bottom:0.5rem}
+h2.sec-title{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:400;color:var(--text);line-height:1.15;margin-bottom:2.5rem}
+h2.sec-title em{font-style:italic;color:var(--lilac-deep)}
+
+/* PROJECT DETAIL */
+#project-detail{background:var(--cream)}
+.project-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.project-left{position:sticky;top:6rem}
+.project-thumb{
+  height:400px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:4rem;
+  border-radius:20px;
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--pink-light),var(--lilac-light));
+}
+.project-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:20px;
+}
+.project-right{}
+.project-meta{margin-bottom:2rem}
+.project-type{font-size:0.8rem;color:var(--pink-deep);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;margin-bottom:0.5rem}
+.project-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:400;color:var(--text);margin-bottom:1rem}
+.project-desc{color:var(--muted);line-height:1.8;font-size:0.95rem;margin-bottom:2rem}
+.project-tech{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem}
+.tech-tag{background:var(--pink-light);color:var(--pink-deep);font-size:0.78rem;padding:5px 14px;border-radius:100px;font-weight:500;border:1px solid rgba(224,120,152,0.2)}
+.tech-tag.lilac{background:var(--lilac-light);color:var(--lilac-deep);border-color:rgba(139,122,201,0.2)}
+.project-links{display:flex;gap:1rem;margin-bottom:2rem}
+.btn-link{padding:0.7rem 2rem;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));color:#fff;border-radius:100px;text-decoration:none;font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.25s;box-shadow:0 4px 20px rgba(224,120,152,0.3)}
+.btn-link:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(224,120,152,0.4)}
+.btn-link.secondary{background:white;color:var(--pink-deep);border:1.5px solid var(--pink)}
+.btn-link.secondary:hover{background:var(--pink-light);border-color:var(--pink-deep)}
+.project-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+.gallery-item{
+  height:150px;
+  border-radius:12px;
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--lilac-light),var(--pink-light));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+}
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* FOOTER */
+footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
+.f-copy{font-size:0.78rem;color:var(--muted)}
+.f-socs{display:flex;gap:0.6rem}
+
+@media(max-width:800px){
+  section{padding:4rem 1.5rem}
+  .project-wrap{grid-template-columns:1fr}
+  .project-left{position:static}
+  footer{flex-direction:column;text-align:center}
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Sevia.</div>
+  <ul class="nav-links">
+    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#resume">Resume</a></li>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ===== PROJECT DETAIL ===== -->
+<section id="project-detail">
+  <div class="sec-label">Project Details</div>
+  <h2 class="sec-title">Explore <em>My Work</em></h2>
+  <div class="project-wrap">
+    <div class="project-left">
+      <div class="project-thumb" id="projectThumb">📁</div>
+      <div class="project-gallery" id="projectGallery"></div>
+    </div>
+    <div class="project-right">
+      <div class="project-meta">
+        <div class="project-type" id="projectType">Type</div>
+        <div class="project-title" id="projectTitle">Project Title</div>
+        <div class="project-desc" id="projectDesc">Description here...</div>
+        <div class="project-tech" id="projectTech"></div>
+        <div class="project-links">
+          <a href="#" id="demoLink" class="btn-link" target="_blank">View Demo</a>
+          <a href="#" id="repoLink" class="btn-link secondary" target="_blank">View Code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="f-logo">Sevia Dwi Yanti</div>
+  <div class="f-copy">© 2025 — All Rights Reserved</div>
+  <div class="f-socs">
+    <a href="https://www.instagram.com/sevia.dwynt_/" class="soc" target="_blank"><i class="bi bi-instagram"></i></a>
+    <a href="https://github.com/seviadwiyanti" class="soc" target="_blank"><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sevia-dwi-yanti-b09a261b1/" class="soc" target="_blank"><i class="bi bi-linkedin"></i></a>
+  </div>
+</footer>
+
+<script>
+const projects = {
+  'wearshare': {
+    title: 'WearShare',
+    type: 'Mobile App',
+    desc: 'WearShare is a mobile application for clothing sharing, built with Kotlin. It allows users to rent out their unused clothes and accessories, promoting sustainable fashion and reducing waste. Features include user authentication, item listing, booking system, and payment integration.',
+    tech: ['Kotlin', 'Android Studio', 'Firebase', 'Room DB'],
+    // Ganti path di bawah sesuai lokasi gambar kamu
+    image: 'assets/img/portfolio/wearshare.png',
+    demo: '#',
+    repo: '#'
+  },
+  'stp-job-portal': {
+    title: 'STP Job Portal',
+    type: 'Web Application',
+    desc: 'A comprehensive job portal designed for STP (Specialized Training Program) participants. Built with Laravel backend and Tailwind CSS for frontend. Features job listings, application tracking, user profiles, and admin dashboard for managing postings.',
+    tech: ['Laravel', 'Tailwind CSS', 'MySQL', 'PHP'],
+    image: 'assets/img/stp-job-portal.png',
+    demo: '#',
+    repo: '#'
+  },
+  'talasgo': {
+    title: 'TalasGo',
+    type: 'Web Application',
+    desc: 'TalasGo is a marketplace web app focused on taro-based products from local farmers. Built to connect farmers directly with consumers, featuring product listings, ordering system, and delivery tracking.',
+    tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+    image: 'assets/img/talasgo.png',
+    gallery: [
+      'assets/img/talasgo-1.png',
+      'assets/img/talasgo-2.png',
+      'assets/img/talasgo-3.png'
+    ],
+    thumb: '🌿',
+    demo: '#',
+    repo: '#'
+  },
+  'enmix': {
+    title: 'Enmix',
+    type: 'Web Platform',
+    desc: 'Environmental management platform for tracking and reporting environmental data. Includes features for data visualization, reporting tools, and user management for environmental monitoring organizations.',
+    tech: ['Laravel', 'Bootstrap', 'MySQL', 'Chart.js'],
+    image: 'assets/img/enmix.png',
+    gallery: [
+      'assets/img/enmix-1.png',
+      'assets/img/enmix-2.png',
+      'assets/img/enmix-3.png'
+    ],
+    thumb: '♻️',
+    demo: '#',
+    repo: '#'
+  },
+  'storyapp': {
+    title: 'StoryApp',
+    type: 'Mobile App',
+    desc: 'A social storytelling Android app built with Kotlin. Users can share their stories with photos, follow other users, and engage with content through likes and comments. Includes location-based features and offline capabilities.',
+    tech: ['Kotlin', 'Android Studio', 'Retrofit', 'Room DB'],
+    image: 'assets/img/storyapp.png',
+    gallery: [
+      'assets/img/storyapp-1.png',
+      'assets/img/storyapp-2.png',
+      'assets/img/storyapp-3.png'
+    ],
+    thumb: '📖',
+    demo: '#',
+    repo: '#'
+  },
+  'banjar-explorer': {
+    title: 'Banjar Explorer',
+    type: 'UI/UX Design',
+    desc: 'Tourism UI/UX design for the Banjar region. Created wireframes and prototypes for a mobile app that helps tourists discover local attractions, book tours, and navigate the area with interactive maps.',
+    tech: ['Figma', 'Adobe XD', 'Prototyping'],
+    image: 'assets/img/banjar-explorer.png',
+    gallery: [
+      'assets/img/banjar-1.png',
+      'assets/img/banjar-2.png',
+      'assets/img/banjar-3.png'
+    ],
+    thumb: '🗺️',
+    demo: '#',
+    repo: '#'
+  },
+  'e-voting': {
+    title: 'E-Voting',
+    type: 'UI/UX Design',
+    desc: 'Digital voting interface design for secure online elections. Focused on accessibility, security features, and user-friendly design to ensure high voter turnout and trust in the electoral process.',
+    tech: ['Figma', 'Usability Testing', 'Wireframing'],
+    image: 'assets/img/e-voting.png',
+    gallery: [
+      'assets/img/evoting-1.png',
+      'assets/img/evoting-2.png',
+      'assets/img/evoting-3.png'
+    ],
+    thumb: '🗳️',
+    demo: '#',
+    repo: '#'
+  },
+  'e-recruitment': {
+    title: 'E-Recruitment',
+    type: 'UI/UX Design',
+    desc: 'HR recruitment system UI design for streamlined hiring processes. Includes features for job posting, candidate tracking, interview scheduling, and analytics dashboard for HR teams.',
+    tech: ['Figma', 'User Research', 'Prototyping'],
+    image: 'assets/img/e-recruitment.png',
+    gallery: [
+      'assets/img/erecruitment-1.png',
+      'assets/img/erecruitment-2.png',
+      'assets/img/erecruitment-3.png'
+    ],
+    thumb: '👥',
+    demo: '#',
+    repo: '#'
+  }
+};
+
+const urlParams = new URLSearchParams(window.location.search);
+const projectKey = urlParams.get('project');
+
+if (projects[projectKey]) {
+  const project = projects[projectKey];
+
+  document.getElementById('projectType').textContent = project.type;
+  document.getElementById('projectTitle').textContent = project.title;
+  document.getElementById('projectDesc').textContent = project.desc;
+
+  // ✅ PERBAIKAN: Render gambar jika ada, fallback ke emoji
+  const thumbEl = document.getElementById('projectThumb');
+  if (project.image) {
+    const img = document.createElement('img');
+    img.src = project.image;
+    img.alt = project.title;
+    img.onerror = function() {
+      // Jika gambar gagal load, tampilkan emoji sebagai fallback
+      thumbEl.textContent = project.thumb;
+    };
+    thumbEl.innerHTML = '';
+    thumbEl.appendChild(img);
+  } else {
+    thumbEl.textContent = project.thumb;
+  }
+
+  // Tech tags
+  const techContainer = document.getElementById('projectTech');
+  project.tech.forEach(tech => {
+    const tag = document.createElement('span');
+    tag.className = 'tech-tag';
+    tag.textContent = tech;
+    techContainer.appendChild(tag);
+  });
+
+  // Links
+  document.getElementById('demoLink').href = project.demo;
+  document.getElementById('repoLink').href = project.repo;
+
+  // ✅ PERBAIKAN: Gallery dengan gambar, fallback ke emoji
+  const galleryContainer = document.getElementById('projectGallery');
+  project.gallery.forEach(src => {
+    const galleryItem = document.createElement('div');
+    galleryItem.className = 'gallery-item';
+
+    // Cek apakah src adalah path gambar atau emoji
+    if (src.startsWith('assets/') || src.startsWith('http') || src.startsWith('/')) {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = project.title;
+      img.onerror = function() {
+        galleryItem.textContent = project.thumb;
+      };
+      galleryItem.appendChild(img);
+    } else {
+      galleryItem.textContent = src; // emoji fallback
+    }
+
+    galleryContainer.appendChild(galleryItem);
+  });
+
+} else {
+  document.getElementById('projectTitle').textContent = 'Project Not Found';
+  document.getElementById('projectDesc').textContent = 'The requested project could not be found.';
+}
+</script>
+
+</body>
+</html>

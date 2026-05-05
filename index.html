@@ -1,908 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Sevia'Porto</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sevia Dwi Yanti — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#fdf8f5;
+  --bg:#fff9fc;
+  --pink-light:#fde8ef;
+  --pink:#f4a7c0;
+  --pink-deep:#e07898;
+  --lilac-light:#ede8f9;
+  --lilac:#b9a9e8;
+  --lilac-deep:#8b7ac9;
+  --text:#3a2d35;
+  --muted:#9e8a96;
+  --border:rgba(180,140,165,0.18);
+  --card:rgba(253,232,239,0.35);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--pink),var(--lilac));border-radius:4px}
 
-    <!-- Favicons -->
-    <link href="assets/img/image.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(255,249,252,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;font-weight:500}
+.nav-links a:hover{color:var(--pink-deep)}
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 4rem 4rem;position:relative;overflow:hidden;gap:3rem}
+.hero-blob1{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(244,167,192,0.22) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none}
+.hero-blob2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(185,169,232,0.18) 0%,transparent 70%);bottom:-80px;left:5%;pointer-events:none}
+.hero-left{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--pink-light);border:1px solid rgba(224,120,152,0.25);border-radius:100px;padding:6px 18px;font-size:0.75rem;color:var(--pink-deep);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:1.8rem;font-weight:600}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--pink-deep);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+h1.name{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);line-height:1;font-weight:300;color:var(--text);margin-bottom:0.3rem}
+h1.name span{font-style:italic;background:linear-gradient(135deg,var(--pink-deep) 0%,var(--lilac-deep) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
+.hero-role{font-size:1rem;color:var(--muted);margin:1.2rem 0 2rem;line-height:1.7}
+.hero-role strong{color:var(--lilac-deep);font-weight:600}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-fill{padding:0.7rem 2rem;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));color:#fff;border-radius:100px;text-decoration:none;font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.25s;box-shadow:0 4px 20px rgba(224,120,152,0.3)}
+.btn-fill:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(224,120,152,0.4)}
+.btn-ghost{padding:0.7rem 2rem;background:transparent;color:var(--pink-deep);border-radius:100px;text-decoration:none;font-weight:600;font-size:0.88rem;border:1.5px solid var(--pink);transition:all 0.25s;cursor:pointer}
+.btn-ghost:hover{background:var(--pink-light);border-color:var(--pink-deep)}
+.hero-socials{display:flex;gap:0.75rem}
+.soc{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:1.05rem;transition:all 0.2s;background:white}
+.soc:hover{border-color:var(--pink);color:var(--pink-deep);transform:translateY(-3px);box-shadow:0 6px 16px rgba(244,167,192,0.3)}
 
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+/* HERO RIGHT */
+.hero-right{position:relative;z-index:2;display:flex;justify-content:center}
+.photo-frame{position:relative;width:340px}
+.photo-inner{width:100%;aspect-ratio:3/4;border-radius:2rem;overflow:hidden;border:3px solid white;box-shadow:0 20px 60px rgba(180,120,160,0.18);background:linear-gradient(135deg,var(--pink-light),var(--lilac-light));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--muted)}
+/* Jika ada foto, ganti div.photo-inner dengan <img src="assets/img/foto-kamu.jpg" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2rem;border:3px solid white;"/> */
+.photo-inner i{font-size:4rem;color:var(--pink)}
+.photo-inner span{font-size:0.82rem}
+.float-card{position:absolute;background:white;border-radius:16px;padding:1rem 1.25rem;box-shadow:0 8px 30px rgba(180,120,160,0.15);border:1px solid var(--border)}
+.float-card1{bottom:-20px;left:-30px}
+.float-card2{top:30px;right:-30px}
+.fc-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--pink-deep);line-height:1}
+.fc-label{font-size:0.7rem;color:var(--muted);margin-top:2px;white-space:nowrap}
+.deco-ring{position:absolute;top:-20px;left:-20px;width:80px;height:80px;border-radius:50%;border:2px dashed var(--pink-light)}
 
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
+/* SECTIONS */
+section{padding:5.5rem 4rem}
+.sec-label{font-size:0.72rem;color:var(--pink-deep);letter-spacing:0.14em;text-transform:uppercase;font-weight:600;margin-bottom:0.5rem}
+h2.sec-title{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:400;color:var(--text);line-height:1.15;margin-bottom:2.5rem}
+h2.sec-title em{font-style:italic;color:var(--lilac-deep)}
 
-    <!-- =======================================================
-  * Template Name: MyResume
-  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  </head>
+/* ABOUT */
+#about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center}
+.about-p{color:var(--muted);line-height:1.85;font-size:0.95rem;margin-bottom:1.2rem}
+.about-p strong{color:var(--pink-deep)}
+.about-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+.tag{background:var(--pink-light);color:var(--pink-deep);font-size:0.78rem;padding:5px 14px;border-radius:100px;font-weight:500;border:1px solid rgba(224,120,152,0.2)}
+.tag.lilac{background:var(--lilac-light);color:var(--lilac-deep);border-color:rgba(139,122,201,0.2)}
+.about-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem}
+.meta-box{background:white;border:1px solid var(--border);border-radius:14px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(180,120,160,0.06)}
+.meta-box .lbl{font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px}
+.meta-box .val{font-size:0.88rem;color:var(--text);font-weight:600}
+.meta-box .val.open{color:var(--pink-deep)}
 
-  <body class="index-page">
-    <header
-      id="header"
-      class="header d-flex flex-column justify-content-center"
-    >
-      <i class="header-toggle d-xl-none bi bi-list"></i>
+/* SKILLS */
+#skills{background:var(--bg)}
+.skills-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.skill-col-title{font-size:0.8rem;color:var(--lilac-deep);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.skill-col-title::after{content:'';flex:1;height:1px;background:linear-gradient(to right,var(--lilac-light),transparent)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:0.85rem}
+.sk{background:white;border:1px solid var(--border);border-radius:14px;padding:1rem 0.75rem;text-align:center;transition:all 0.25s;cursor:default;box-shadow:0 2px 8px rgba(180,120,160,0.06)}
+.sk:hover{border-color:var(--pink);transform:translateY(-4px);box-shadow:0 8px 24px rgba(244,167,192,0.2)}
+.sk img{width:36px;height:36px;margin:0 auto 0.5rem;display:block}
+.sk-name{font-size:0.75rem;color:var(--muted);font-weight:500}
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li>
-            <a href="#hero" class="active"
-              ><i class="bi bi-house navicon"></i><span>Home</span></a
-            >
-          </li>
-          <li>
-            <a href="#about"
-              ><i class="bi bi-person navicon"></i><span>About</span></a
-            >
-          </li>
-          <li>
-            <a href="#resume"
-              ><i class="bi bi-file-earmark-text navicon"></i
-              ><span>Resume</span></a
-            >
-          </li>
-          <li>
-            <a href="#portfolio"
-              ><i class="bi bi-images navicon"></i><span>Portofolio</span></a
-            >
-          </li>
-          <li>
-            <a href="#contact"
-              ><i class="bi bi-envelope navicon"></i><span>Contact</span></a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+/* RESUME */
+#resume{background:var(--cream)}
+.resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem}
+.col-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--text);margin-bottom:1.5rem;display:flex;align-items:center;gap:10px;font-weight:400}
+.col-title i{color:var(--pink-deep);font-size:1rem}
+.timeline{border-left:2px solid var(--pink-light);padding-left:1.5rem}
+.tl{position:relative;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px dashed var(--border)}
+.tl:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.tl::before{content:'';position:absolute;left:-1.75rem;top:5px;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--lilac));border:2px solid white;box-shadow:0 0 0 3px var(--pink-light)}
+.tl-date{font-size:0.73rem;color:var(--pink-deep);font-weight:600;letter-spacing:0.05em;margin-bottom:5px}
+.tl-role{font-size:0.97rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.tl-place{font-size:0.83rem;color:var(--lilac-deep);margin-bottom:8px;font-style:italic}
+.tl-pts{list-style:none;font-size:0.82rem;color:var(--muted);line-height:1.7}
+.tl-pts li{padding-left:1rem;position:relative;margin-bottom:3px}
+.tl-pts li::before{content:'✦';position:absolute;left:0;color:var(--pink);font-size:0.6rem;top:3px}
 
-    <main class="main">
-      <!-- Hero Section -->
-      <!-- <section id="hero" class="hero section light-background">
-        <img src="assets/img/sampulnew.png" alt="" />
-        <div class="container" data-aos="zoom-out">
-          <div class="row justify-content-center">
-            <div class="col-lg-9">
-              <h2>Sevia Dwi Yanti </h2>
-              <p>
-                I'm
-                <span
-                  class="typed"
-                  data-typed-items="Developer"
-                  >Developer</span
-                ><span
-                  class="typed-cursor typed-cursor--blink"
-                  aria-hidden="true"
-                ></span>
-              </p>
-              <div class="social-links">
-                <a href="https://www.instagram.com/sevia.dwynt_/"><i class="bi bi-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/sevia-dwi-yanti-b09a261b1/?locale=in_ID"><i class="bi bi-linkedin"></i></a>
-                <a href="https://github.com/seviadwiyanti"><i class="bi bi-github"></i></a>
-              </div>
-            </div>
-          </div>
+/* PORTFOLIO */
+#portfolio{background:var(--bg)}
+.porto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.porto-card{background:white;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.3s;cursor:pointer;box-shadow:0 2px 12px rgba(180,120,160,0.07)}
+.porto-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(180,120,160,0.16);border-color:var(--pink)}
+.porto-thumb{height:190px;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+/* Untuk mengganti thumbnail dengan gambar asli:
+   Ganti <div class="porto-thumb pink">emoji</div>
+   dengan <img src="assets/img/portfolio/nama-gambar.png" style="width:100%;height:190px;object-fit:cover;"/> */
+.porto-thumb.pink{background:linear-gradient(135deg,var(--pink-light),#fce4ec)}
+.porto-thumb.lilac{background:linear-gradient(135deg,var(--lilac-light),#e8eaf6)}
+.porto-thumb.peach{background:linear-gradient(135deg,#fdebd0,#fce4d6)}
+.porto-thumb.mint{background:linear-gradient(135deg,#e8f5e9,#f1f8e9)}
+.porto-body{padding:1.2rem 1.4rem}
+.porto-type{font-size:0.7rem;color:var(--pink-deep);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;margin-bottom:4px}
+.porto-name{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.porto-desc{font-size:0.8rem;color:var(--muted);line-height:1.6}
+.porto-filters{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:2rem}
+.pf-btn{padding:0.55rem 1.4rem;border-radius:100px;border:1.5px solid var(--border);background:white;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.83rem;font-weight:600;cursor:pointer;transition:all 0.2s}
+.pf-btn:hover{border-color:var(--pink);color:var(--pink-deep)}
+.pf-btn.active{background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));color:white;border-color:transparent;box-shadow:0 4px 14px rgba(224,120,152,0.3)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* CONTACT */
+#contact{background:linear-gradient(135deg,#fdf0f5 0%,#f3eeff 100%)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-intro{color:var(--muted);font-size:0.95rem;line-height:1.8;margin-bottom:2rem}
+.cinfo{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:white;border:1px solid var(--border);border-radius:14px;margin-bottom:0.85rem;transition:all 0.2s;box-shadow:0 2px 8px rgba(180,120,160,0.05)}
+.cinfo:hover{border-color:var(--pink);box-shadow:0 4px 16px rgba(244,167,192,0.15)}
+.cinfo-icon{width:38px;height:38px;border-radius:10px;background:var(--pink-light);display:flex;align-items:center;justify-content:center;color:var(--pink-deep);font-size:0.95rem;flex-shrink:0}
+.cinfo-lbl{font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+.cinfo-val{font-size:0.88rem;color:var(--text);font-weight:600}
+.cform{display:flex;flex-direction:column;gap:1rem;background:white;padding:2rem;border-radius:20px;border:1px solid var(--border);box-shadow:0 4px 20px rgba(180,120,160,0.08)}
+.flabel{font-size:0.75rem;color:var(--muted);margin-bottom:5px;display:block;letter-spacing:0.05em;text-transform:uppercase}
+.finput{width:100%;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.7rem 1rem;color:var(--text);font-family:inherit;font-size:0.9rem;outline:none;transition:border-color 0.2s}
+.finput:focus{border-color:var(--pink)}
+textarea.finput{min-height:110px;resize:vertical}
+.fsend{padding:0.8rem 2rem;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));color:white;border-radius:100px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(224,120,152,0.3)}
+.fsend:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,120,152,0.4)}
+.btn-download{padding:0.7rem 2rem;background:white;color:var(--lilac-deep);border-radius:100px;text-decoration:none;font-weight:600;font-size:0.88rem;border:1.5px solid var(--lilac);transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.btn-download:hover{background:var(--lilac-light);border-color:var(--lilac-deep);transform:translateY(-2px);box-shadow:0 6px 20px rgba(139,122,201,0.25)}
+
+/* FOOTER */
+footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
+.f-copy{font-size:0.78rem;color:var(--muted)}
+.f-socs{display:flex;gap:0.6rem}
+
+@media(max-width:800px){
+  #hero{grid-template-columns:1fr;padding:6rem 1.5rem 4rem}
+  .hero-right{display:none}
+  section{padding:4rem 1.5rem}
+  .about-grid,.resume-grid,.contact-wrap,.skills-wrap{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center}
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Sevia.</div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-blob1"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-left">
+    <div class="hero-badge">✦ Available for opportunities</div>
+    <h1 class="name">Sevia<br><span>Dwi Yanti</span></h1>
+    <p class="hero-role">Mobile Developer · <strong>Kotlin &amp; Flutter</strong><br>Mobile Developer Enthusiast · Fresh Graduate IPB University</p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-fill">View My Work</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+      <a href="assets/cv-sevia.pdf" download="CV_Sevia_Dwi_Yanti.pdf" class="btn-download"><i class="bi bi-download"></i> Download CV</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://www.instagram.com/sevia.dwynt_/" class="soc" target="_blank"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/sevia-dwi-yanti-b09a261b1/" class="soc" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/seviadwiyanti" class="soc" target="_blank"><i class="bi bi-github"></i></a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="photo-frame">
+      <div class="deco-ring"></div>
+      <!-- GANTI: hapus div.photo-inner di bawah, lalu taruh:
+           <img src="assets/img/foto-kamu.jpg" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2rem;border:3px solid white;box-shadow:0 20px 60px rgba(180,120,160,0.18);display:block;"/>
+      -->
+      <div class="photo-inner">
+        <i class="bi bi-person-circle"></i>
+        <span style="font-size:0.8rem;color:var(--pink)">Ganti dengan fotomu 🌸</span>
+      </div>
+      <div class="float-card float-card1">
+        <div class="fc-num">8+</div>
+        <div class="fc-label">Projects Built</div>
+      </div>
+      <div class="float-card float-card2">
+        <div class="fc-num">3+</div>
+        <div class="fc-label">Years Coding</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="sec-label">About Me</div>
+      <h2 class="sec-title">Software Engineer<br>with a <em>creative soul</em></h2>
+      <p class="about-p">Sevia Dwi Yanti is a fresh graduate in Software Engineering Technology from <strong>IPB University</strong> with a strong passion for mobile application development.</p>
+      <p class="about-p">Proficient in <strong>Kotlin</strong> and <strong>Flutter</strong>, focused on writing clean, well-structured code. Passionate about creating user-friendly apps that blend technology, design, and real-world needs.</p>
+      <div class="about-tags">
+        <span class="tag">Kotlin</span>
+        <span class="tag">Flutter</span>
+        <span class="tag lilac">Mobile Dev</span>
+        <span class="tag">UI/UX</span>
+        <span class="tag lilac">Laravel</span>
+        <span class="tag">Angular</span>
+      </div>
+    </div>
+    <div class="about-meta-grid">
+      <div class="meta-box"><div class="lbl">Location</div><div class="val">Sukabumi, Jawa Barat</div></div>
+      <div class="meta-box"><div class="lbl">Email</div><div class="val">seviadwynt@gmail.com</div></div>
+      <div class="meta-box"><div class="lbl">Phone</div><div class="val">+62 812 3911 6946</div></div>
+      <div class="meta-box"><div class="lbl">Status</div><div class="val open">Open to Work ✦</div></div>
+      <div class="meta-box" style="grid-column:span 2"><div class="lbl">Education</div><div class="val">D4 Software Engineering · IPB University · 2021–2025</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="sec-label">My Skills</div>
+  <h2 class="sec-title">Tools &amp; <em>Technologies</em></h2>
+  <div class="skills-wrap">
+    <div>
+      <div class="skill-col-title">Technology</div>
+      <div class="skills-grid">
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/><div class="sk-name">HTML</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"/><div class="sk-name">CSS</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/><div class="sk-name">JavaScript</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"/><div class="sk-name">PHP</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin"/><div class="sk-name">Kotlin</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel"/><div class="sk-name">Laravel</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular"/><div class="sk-name">Angular</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-col-title" style="color:var(--pink-deep)">Tools</div>
+      <div class="skills-grid">
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/><div class="sk-name">Figma</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/><div class="sk-name">Git</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"/><div class="sk-name">VS Code</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/><div class="sk-name">MySQL</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="Android Studio"/><div class="sk-name">Android Studio</div></div>
+        <div class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" alt="Illustrator"/><div class="sk-name">Illustrator</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESUME ===== -->
+<section id="resume">
+  <div class="sec-label">My Journey</div>
+  <h2 class="sec-title">Experience &amp; <em>Education</em></h2>
+  <div class="resume-grid">
+    <div>
+      <div class="col-title"><i class="bi bi-mortarboard"></i> Education &amp; Org</div>
+      <div class="timeline">
+        <div class="tl">
+          <div class="tl-date">2021 — 2025</div>
+          <div class="tl-role">Software Engineering Technology</div>
+          <div class="tl-place">Sekolah Vokasi IPB University</div>
         </div>
-      </section> -->
-      <!-- /Hero Section -->
-
-      <!-- Original Hero Section -->
-      <section id="hero" class="hero section light-background">
-        <img src="assets/img/sampulnew.png" alt="Sevia Background" />
-        <div class="container" data-aos="zoom-out">
-          <div class="row justify-content-center">
-            <div class="col-lg-9">
-              <h2>Sevia Dwi Yanti</h2>
-              <p>
-                I'm
-                <span class="typed" data-typed-items="Developer"
-                  >Developer</span
-                >
-                <span
-                  class="typed-cursor typed-cursor--blink"
-                  aria-hidden="true"
-                ></span>
-              </p>
-              <div class="social-links">
-                <a href="https://www.instagram.com/sevia.dwynt_/"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a
-                  href="https://www.linkedin.com/in/sevia-dwi-yanti-b09a261b1/?locale=in_ID"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-                <a href="https://github.com/seviadwiyanti"
-                  ><i class="bi bi-github"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- About Section -->
-      <!-- About Section HTML -->
-      <section id="about" class="about section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>About</h2>
-        </div>
-        <!-- End Section Title -->
-
-        <div
-          class="container"
-          data-aos="fade-up"
-          data-aos-delay="100"
-          style="margin-top: -30px"
-        >
-          <div class="row gy-4 justify-content-center align-items-center">
-            <div class="col-lg-4 text-center">
-              <div class="about-img-wrapper">
-                <img
-                  src="assets/img/aboutbaru.jpg"
-                  class="about-profile-img"
-                  alt="Profile Picture"
-                />
-              </div>
-            </div>
-            <div class="col-lg-8 content">
-              <p class="py-3">
-                I am a fresh graduate in Software Engineering Technology from
-                IPB University. I have a deep interest in programming, both for
-                web and mobile development. With great enthusiasm in this field,
-                I continue to develop my skills through various projects. I have
-                a great sense of responsibility and am able to work well
-                individually and in a team.
-              </p>
-              <h2>Software Engineering</h2>
-              <p class="fst-italic py-3">
-                Passionate about creating innovative solutions through code and
-                design.
-              </p>
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Phone:</strong> <span>+6281239116946</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>City:</strong> <span>Sukabumi, Jawa Barat</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Email:</strong> <span>seviadwynt@gmail.com</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /About Section -->
-      <!-- /About Section -->
-
-      <!-- Skills Section -->
-      <section id="skills" class="skills section">
-        <div class="container section-title">
-          <h2>Skills</h2>
-          <p>
-            Tools and technologies I use to build amazing digital experiences.
-          </p>
-        </div>
-
-        <div class="container">
-          <!-- Skills Filter Buttons -->
-          <ul class="skills-filters">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-technology">Technology</li>
-            <li data-filter=".filter-tools">Tools</li>
+        <div class="tl">
+          <div class="tl-role">Himavo Micro IT — Multimedia</div>
+          <div class="tl-place">Student Organization</div>
+          <ul class="tl-pts">
+            <li>Graphic design &amp; digital marketing material</li>
+            <li>3+ years of creative design experience</li>
           </ul>
-
-          <!-- Skills Wrapper with Navigation -->
-          <div class="skills-wrapper">
-            <button class="skills-navigation prev" id="prevBtn">
-              <i class="bi bi-chevron-left"></i>
-            </button>
-
-            <button class="skills-navigation next" id="nextBtn">
-              <i class="bi bi-chevron-right"></i>
-            </button>
-
-            <!-- Skills Items -->
-            <div class="skills-container" id="skillsContainer">
-              <!-- Technology Skills -->
-              <div class="skill-item filter-technology">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                    class="img-fluid"
-                    alt="HTML"
-                    title="HTML"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">HTML</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-technology">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                    class="img-fluid"
-                    alt="CSS"
-                    title="CSS"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">CSS</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-technology">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                    class="img-fluid"
-                    alt="JavaScript"
-                    title="JavaScript"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">JavaScript</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-technology">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-                    class="img-fluid"
-                    alt="PHP"
-                    title="PHP"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">PHP</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-technology">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
-                    class="img-fluid"
-                    alt="Angular"
-                    title="Angular"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">Angular</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-technology">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
-                    class="img-fluid"
-                    alt="Kotlin"
-                    title="Kotlin"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">Kotlin</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-technology">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
-                    class="img-fluid"
-                    alt="Laravel"
-                    title="Laravel"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">Laravel</p>
-                </div>
-              </div>
-
-              <!-- Tools -->
-              <div class="skill-item filter-tools">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-                    class="img-fluid"
-                    alt="Figma"
-                    title="Figma"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">Figma</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-tools">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                    class="img-fluid"
-                    alt="Git"
-                    title="Git"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">Git</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-tools">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                    class="img-fluid"
-                    alt="VS Code"
-                    title="VS Code"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">VS Code</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-tools">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                    class="img-fluid"
-                    alt="MySQL"
-                    title="MySQL"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">MySQL</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-tools">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
-                    class="img-fluid"
-                    alt="Android Studio"
-                    title="Android Studio"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">Android Studio</p>
-                </div>
-              </div>
-
-              <div class="skill-item filter-tools">
-                <div class="card border-0 p-3 skill-card">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg"
-                    class="img-fluid"
-                    alt="Illustrator"
-                    title="Illustrator"
-                  />
-                  <p class="mt-2 mb-0 fw-bold">Illustrator</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Resume Section -->
-      <section id="resume" class="resume section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Resume</h2>
-        </div>
-        <!-- End Section Title -->
-
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <!-- Edn Resume Item -->
-
-              <h3 class="resume-title">Education</h3>
-              <div class="resume-item">
-                <h4>Software Engineering Technology</h4>
-                <h5>2021 - 2025</h5>
-                <p><em>Sekolah Vokasi IPB University</em></p>
-              </div>
-
-              <h3 class="resume-title">ORGANIZATION</h3>
-
-              <div class="resume-item pb-0">
-                <h4>Himavo Micro IT - Multimedia</h4>
-                <p>
-                  <em
-                    >Innovative and deadline-driven Graphic Designer with 3+
-                    years of experience designing and developing user-centered
-                    digital/print marketing material from initial concept to
-                    final, polished deliverable.</em
-                  >
-                </p>
-              </div>
-              <!-- Edn Resume Item -->
-            </div>
-
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-              <h3 class="resume-title">Experience</h3>
-              <div class="resume-item">
-                <h4>UI/UX Developer</h4>
-                <h5>Jan 2025 - Jul 2025</h5>
-                <p><em> PT Amerta Indah Otsuka, Sukabumi</em></p>
-                <ul>
-                  <li>
-                    Lead in the design, development, and implementation of the
-                    graphic, layout, and production communication materials
-                  </li>
-                  <li>
-                    Delegate tasks to the 7 members of the design team and
-                    provide counsel on all aspects of the project.
-                  </li>
-                </ul>
-              </div>
-              <!-- Edn Resume Item -->
-
-              <div class="resume-item">
-                <h4>Web Developer</h4>
-                <h5>Jul 2024 - Des 2024</h5>
-                <p><em>PT Anugrah Eka Gemilang</em></p>
-                <ul>
-                  <li>
-                    Conducted needs analysis and designed wireframes and
-                    interface mockups for the STP Job Portal using Figma.
-                  </li>
-                  <li>
-                    Developed the website using Tailwind CSS for frontend and
-                    Laravel framework for backend implementation.
-                  </li>
-                </ul>
-              </div>
-              <!-- Edn Resume Item -->
-
-              <div class="resume-item">
-                <h4>Mobile Developer</h4>
-                <h5>Feb 2024 - Jul 2024</h5>
-                <p><em> Cohort Bangkit Academy</em></p>
-                <ul>
-                  <li>
-                    Learned mobile app development using Kotlin from beginner to
-                    intermediate level and worked on project submissions after
-                    each milestone.
-                  </li>
-                  <li>
-                    Participated in capstone projects from wireframe to code
-                    integration in Android Studio and joined ILT soft skills
-                    activities organized by Bangkit Academy.
-                  </li>
-                </ul>
-              </div>
-              <!-- Edn Resume Item -->
-
-              <div class="resume-item">
-                <h4>Assistant Lecturer</h4>
-                <h5>2017 - 2018</h5>
-                <p><em>Stepping Stone Advertising, New York, NY</em></p>
-                <ul>
-                  <li>
-                    Developed numerous marketing programs (logos,
-                    brochures,infographics, presentations, and advertisements).
-                  </li>
-                  <li>
-                    Managed up to 5 projects or tasks at a given time while
-                    under pressure
-                  </li>
-                </ul>
-              </div>
-              <!-- Edn Resume Item -->
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /Resume Section -->
-
-      <!-- Portfolio Section -->
-      <section id="portfolio" class="portfolio section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Portofolio</h2>
-        </div>
-        <!-- End Section Title -->
-
-        <div class="container">
-          <div
-            class="isotope-layout"
-            data-default-filter="*"
-            data-layout="masonry"
-            data-sort="original-order"
-          >
-            <ul
-              class="portfolio-filters isotope-filters"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Website</li>
-              <li data-filter=".filter-product">Mobile</li>
-              <li data-filter=".filter-branding">UI/UX</li>
-            </ul>
-            <!-- End Portfolio Filters -->
-
-            <div
-              class="row gy-4 isotope-container"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
-              >
-                <img
-                  src="assets/img/portfolio/wearshare.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>WearShare</h4>
-                  <a
-                    href="assets/img/portfolio/wearshare.png"
-                    title="App 1"
-                    data-gallery="portfolio-gallery-app"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/portfolio/porto16.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>STP Job Portal</h4>
-                  <a
-                    href="assets/img/portfolio/porto16.png"
-                    title="Product 1"
-                    data-gallery="portfolio-gallery-product"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/portfolio/talasGo.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>TalasGo</h4>
-                  <a
-                    href="assets/img/portfolio/talasGo.png"
-                    title="Branding 1"
-                    data-gallery="portfolio-gallery-branding"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/portfolio/Enmix.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>Enmix</h4>
-                  <a
-                    href="assets/img/portfolio/Enmix.png"
-                    title="App 2"
-                    data-gallery="portfolio-gallery-app"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
-              >
-                <img
-                  src="assets/img/portfolio/StoryApp.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>StoryApp</h4>
-                  <a
-                    href="assets/img/portfolio/StoryApp.png"
-                    title="StoryApp"
-                    data-gallery="portfolio-gallery-product"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                  <!-- <a
-                    href="portfolio-details.html"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-link-45deg"></i
-                  ></a> -->
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding"
-              >
-                <img
-                  src="assets/img/portfolio/banjarexplorer.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>Banjar Explorer</h4>
-                  <a
-                    href="assets/img/portfolio/banjarexplorer.png"
-                    title="Branding 2"
-                    data-gallery="portfolio-gallery-branding"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding"
-              >
-                <img
-                  src="assets/img/portfolio/e-voting.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>E-Voting</h4>
-                  <a
-                    href="assets/img/portfolio/e-voting.png"
-                    title="App 3"
-                    data-gallery="portfolio-gallery-app"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding"
-              >
-                <img
-                  src="assets/img/portfolio/e-recruitment.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>E-Recruitment</h4>
-                  <a
-                    href="assets/img/portfolio/e-recruitment.png"
-                    title="Product 3"
-                    data-gallery="portfolio-gallery-product"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <!-- End Portfolio Item -->
-            </div>
-            <!-- End Portfolio Container -->
-          </div>
-        </div>
-      </section>
-      <!-- /Portfolio Section -->
-
-      <!-- Contact Section -->
-      <section id="contact" class="contact section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Contact</h2>
-        </div>
-        <!-- End Section Title -->
-
-        <div class="container" data-aos="fade" data-aos-delay="100">
-          <div class="row gy-4">
-            <div class="col-lg-4">
-              <div
-                class="info-item d-flex"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <p>Sukabumi, Jawa Barat</p>
-                </div>
-              </div>
-              <!-- End Info Item -->
-
-              <div
-                class="info-item d-flex"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Call Us</h3>
-                  <p>+6281239116946</p>
-                </div>
-              </div>
-              <!-- End Info Item -->
-
-              <div
-                class="info-item d-flex"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email Us</h3>
-                  <p>seviadwynt@gmail.com</p>
-                </div>
-              </div>
-              <!-- End Info Item -->
-            </div>
-
-            <div class="col-lg-8">
-              <form
-                action="forms/contact.php"
-                method="post"
-                class="php-email-form"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <div class="row gy-4">
-                  <div class="col-md-6">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="Your Name"
-                      required=""
-                    />
-                  </div>
-
-                  <div class="col-md-6">
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      placeholder="Your Email"
-                      required=""
-                    />
-                  </div>
-
-                  <div class="col-md-12">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="subject"
-                      placeholder="Subject"
-                      required=""
-                    />
-                  </div>
-
-                  <div class="col-md-12">
-                    <textarea
-                      class="form-control"
-                      name="message"
-                      rows="6"
-                      placeholder="Message"
-                      required=""
-                    ></textarea>
-                  </div>
-
-                  <div class="col-md-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">
-                      Your message has been sent. Thank you!
-                    </div>
-
-                    <button type="submit">Send Message</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <!-- End Contact Form -->
-          </div>
-        </div>
-      </section>
-      <!-- /Contact Section -->
-    </main>
-
-    <footer id="footer" class="footer position-relative light-background">
-      <div class="container">
-        <h3 class="sitename">Sevia Dwi Yanti</h3>
-        <div class="social-links d-flex justify-content-center">
-          <a href="https://www.instagram.com/sevia.dwynt_/"
-            ><i class="bi bi-instagram"></i
-          ></a>
-          <a href="https://github.com/seviadwiyanti"
-            ><i class="bi bi-github"></i
-          ></a>
-          <a
-            href="https://www.linkedin.com/in/sevia-dwi-yanti-b09a261b1/?locale=in_ID"
-            ><i class="bi bi-linkedin"></i
-          ></a>
-        </div>
-        <div class="container">
-          <div class="copyright">
-            <span>Copyright</span>
-            <strong class="px-1 sitename">Sevia Dwi Yanti</strong>
-            <span>All Rights Reserved</span>
-          </div>
         </div>
       </div>
-    </footer>
+    </div>
+    <div>
+      <div class="col-title"><i class="bi bi-briefcase"></i> Experience</div>
+      <div class="timeline">
+        <div class="tl">
+          <div class="tl-date">Jan 2025 — Jul 2025</div>
+          <div class="tl-role">UI/UX Developer</div>
+          <div class="tl-place">PT Amerta Indah Otsuka, Sukabumi</div>
+          <ul class="tl-pts">
+            <li>Led design &amp; production of communication materials</li>
+            <li>Managed 7-member design team</li>
+          </ul>
+        </div>
+        <div class="tl">
+          <div class="tl-date">Jul 2024 — Des 2024</div>
+          <div class="tl-role">Web Developer</div>
+          <div class="tl-place">PT Anugrah Eka Gemilang</div>
+          <ul class="tl-pts">
+            <li>Designed STP Job Portal using Figma</li>
+            <li>Built with Tailwind CSS + Laravel</li>
+          </ul>
+        </div>
+        <div class="tl">
+          <div class="tl-date">Feb 2024 — Jul 2024</div>
+          <div class="tl-role">Mobile Developer</div>
+          <div class="tl-place">Cohort Bangkit Academy</div>
+          <ul class="tl-pts">
+            <li>Mobile dev with Kotlin, beginner to intermediate</li>
+            <li>Capstone: wireframe to full code integration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Scroll Top -->
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+<!-- ===== PORTFOLIO ===== -->
+<section id="portfolio">
+  <div class="sec-label">My Work</div>
+  <h2 class="sec-title">Selected <em>Projects</em></h2>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
+  <!-- FILTER TABS -->
+  <div class="porto-filters">
+    <button class="pf-btn active" onclick="filterPorto('all', this)">All</button>
+    <button class="pf-btn" onclick="filterPorto('mobile', this)">📱 Mobile</button>
+    <button class="pf-btn" onclick="filterPorto('website', this)">🌐 Website</button>
+    <button class="pf-btn" onclick="filterPorto('uiux', this)">🎨 UI/UX</button>
+  </div>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/typed.js/typed.umd.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <div class="porto-grid" id="portoGrid">
+    <a href="portfolio-details.html?project=wearshare" class="porto-card" data-cat="mobile">
+      <img src="assets/img/portfolio/wearshare.png" alt="WearShare" style="width:100%;height:190px;object-fit:cover;display:block;"/>
+      <div class="porto-body"><div class="porto-type">Mobile</div><div class="porto-name">WearShare</div><div class="porto-desc">Clothing sharing mobile app built with Kotlin</div></div>
+    </a>
+    <a href="portfolio-details.html?project=stp-job-portal" class="porto-card" data-cat="website">
+      <img src="assets/img/portfolio/porto16.png" alt="STP Job Portal" style="width:100%;height:190px;object-fit:cover;display:block;"/>
+      <div class="porto-body"><div class="porto-type">Website</div><div class="porto-name">STP Job Portal</div><div class="porto-desc">Job portal built with Laravel &amp; Tailwind CSS</div></div>
+    </a>
+    <a href="portfolio-details.html?project=talasgo" class="porto-card" data-cat="website">
+      <img src="assets/img/portfolio/talasGo.png" alt="TalasGo" style="width:100%;height:190px;object-fit:cover;display:block;"/>
+      <div class="porto-body"><div class="porto-type">Website</div><div class="porto-name">TalasGo</div><div class="porto-desc">Taro-based product marketplace web app</div></div>
+    </a>
+    <a href="portfolio-details.html?project=enmix" class="porto-card" data-cat="website">
+      <img src="assets/img/portfolio/Enmix.png" alt="Enmix" style="width:100%;height:190px;object-fit:cover;display:block;"/>
+      <div class="porto-body"><div class="porto-type">Website</div><div class="porto-name">Enmix</div><div class="porto-desc">Environmental management platform</div></div>
+    </a>
+    <a href="portfolio-details.html?project=storyapp" class="porto-card" data-cat="mobile">
+      <img src="assets/img/portfolio/StoryApp.png" alt="StoryApp" style="width:100%;height:190px;object-fit:cover;display:block;"/>
+      <div class="porto-body"><div class="porto-type">Mobile</div><div class="porto-name">StoryApp</div><div class="porto-desc">Kotlin-based social storytelling Android app</div></div>
+    </a>
+    <a href="portfolio-details.html
+    ?project=banjar-explorer" class="porto-card" data-cat="uiux">
+      <img src="assets/img/portfolio/banjarexplorer.png" alt="Banjar Explorer" style="width:100%;height:190px;object-fit:cover;display:block;"/>
+      <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">Banjar Explorer</div><div class="porto-desc">Tourism UI/UX design for Banjar region</div></div>
+    </a>
+    <a href="portfolio-details.html?project=e-voting" class="porto-card" data-cat="uiux">
+      <img src="assets/img/portfolio/e-voting.png" alt="E-Voting" style="width:100%;height:190px;object-fit:cover;display:block;"/>
+      <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">E-Voting</div><div class="porto-desc">Digital voting interface design</div></div>
+    </a>
+    <a href="portfolio-details.html?project=e-recruitment" class="porto-card" data-cat="uiux">
+      <img src="assets/img/portfolio/e-recruitment.png" alt="E-Recruitment" style="width:100%;height:190px;object-fit:cover;display:block;"/>
+      <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">E-Recruitment</div><div class="porto-desc">HR recruitment system UI design</div></div>
+    </a>
+  </div>
+</section>
 
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
-  </body>
+<script>
+function filterPorto(cat, btn) {
+  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.porto-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = 'block';
+      card.style.animation = 'fadeIn 0.3s ease';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="sec-label">Say Hello</div>
+  <h2 class="sec-title" style="margin-bottom:0">Let's work<br><em>together.</em></h2>
+  <div class="contact-wrap" style="margin-top:2.5rem">
+    <div>
+      <p class="contact-intro">I'm currently open to new opportunities. Whether you have a project in mind or just want to connect — feel free to reach out! I'd love to hear from you 🌸</p>
+      <div class="cinfo"><div class="cinfo-icon"><i class="bi bi-geo-alt"></i></div><div><div class="cinfo-lbl">Location</div><div class="cinfo-val">Sukabumi, Jawa Barat</div></div></div>
+      <div class="cinfo"><div class="cinfo-icon"><i class="bi bi-envelope"></i></div><div><div class="cinfo-lbl">Email</div><div class="cinfo-val">seviadwynt@gmail.com</div></div></div>
+      <div class="cinfo"><div class="cinfo-icon"><i class="bi bi-telephone"></i></div><div><div class="cinfo-lbl">Phone</div><div class="cinfo-val">+62 812 3911 6946</div></div></div>
+    </div>
+    <div class="cform">
+      <div><label class="flabel">Your Name</label><input class="finput" type="text" placeholder="e.g. Budi Santoso"/></div>
+      <div><label class="flabel">Email</label><input class="finput" type="email" placeholder="budi@email.com"/></div>
+      <div><label class="flabel">Subject</label><input class="finput" type="text" placeholder="Project Inquiry"/></div>
+      <div><label class="flabel">Message</label><textarea class="finput" placeholder="Tell me about your project..."></textarea></div>
+      <button class="fsend"><i class="bi bi-send"></i> Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="f-logo">Sevia Dwi Yanti</div>
+  <div class="f-copy">© 2025 — All Rights Reserved</div>
+  <div class="f-socs">
+    <a href="https://www.instagram.com/sevia.dwynt_/" class="soc" target="_blank"><i class="bi bi-instagram"></i></a>
+    <a href="https://github.com/seviadwiyanti" class="soc" target="_blank"><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sevia-dwi-yanti-b09a261b1/" class="soc" target="_blank"><i class="bi bi-linkedin"></i></a>
+  </div>
+</footer>
+
+</body>
 </html>
