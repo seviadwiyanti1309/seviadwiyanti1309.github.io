@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sevia Dwi Yanti — Curriculum Vitae</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#fdf8f5;
+  --bg:#fff9fc;
+  --pink-light:#fde8ef;
+  --pink:#f4a7c0;
+  --pink-deep:#e07898;
+  --lilac-light:#ede8f9;
+  --lilac:#b9a9e8;
+  --lilac-deep:#8b7ac9;
+  --text:#3a2d35;
+  --muted:#9e8a96;
+  --border:rgba(180,140,165,0.18);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--pink),var(--lilac));border-radius:4px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(255,249,252,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;font-weight:500}
+.nav-links a:hover{color:var(--pink-deep)}
+.nav-back{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:8px;transition:color 0.2s}
+.nav-back:hover{color:var(--pink-deep)}
+
+/* CV CONTAINER */
+.cv-container{max-width:900px;margin:8rem auto 4rem;padding:0 2rem;background:white;border-radius:20px;box-shadow:0 10px 40px rgba(180,120,160,0.12);overflow:hidden}
+.cv-header{background:linear-gradient(135deg,#fdf0f5 0%,#f3eeff 100%);padding:3rem 2.5rem;text-align:center;border-bottom:2px solid var(--border)}
+.cv-name{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;color:var(--text);margin-bottom:0.5rem}
+.cv-title{color:var(--pink-deep);font-size:1.1rem;font-weight:600;letter-spacing:0.05em;margin-bottom:1rem}
+.cv-contact-info{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;font-size:0.9rem;color:var(--muted)}
+.cv-contact-info span{display:flex;align-items:center;gap:6px}
+.cv-contact-info i{color:var(--pink-deep)}
+
+.cv-body{padding:2.5rem}
+
+.cv-section{margin-bottom:2.5rem}
+.cv-section:last-child{margin-bottom:0}
+.cv-section-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--text);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--pink-light);display:flex;align-items:center;gap:10px}
+.cv-section-title i{color:var(--pink-deep);font-size:1.3rem}
+
+.cv-entry{margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px dashed var(--border)}
+.cv-entry:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.cv-date{font-size:0.85rem;color:var(--pink-deep);font-weight:600;letter-spacing:0.05em;margin-bottom:8px}
+.cv-role{font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:5px}
+.cv-place{font-size:0.9rem;color:var(--lilac-deep);font-style:italic;margin-bottom:10px}
+.cv-desc{color:var(--muted);font-size:0.9rem;line-height:1.7;margin-bottom:8px}
+.cv-desc li{margin-left:1.5rem;margin-bottom:5px}
+
+.cv-skills{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.cv-skill-group{padding:1.5rem;background:var(--cream);border-radius:12px;border:1px solid var(--border)}
+.cv-skill-group-title{font-weight:600;color:var(--pink-deep);margin-bottom:1rem;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.05em}
+.cv-skill-list{display:flex;flex-wrap:wrap;gap:0.6rem}
+.cv-skill-tag{background:white;color:var(--text);font-size:0.85rem;padding:6px 14px;border-radius:8px;border:1px solid var(--border);font-weight:500}
+
+.cv-actions{display:flex;gap:1rem;justify-content:center;padding:2rem 2.5rem;background:var(--cream);border-top:1px solid var(--border);flex-wrap:wrap}
+.btn-download-pdf{padding:0.9rem 2rem;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));color:white;border-radius:100px;text-decoration:none;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(224,120,152,0.3)}
+.btn-download-pdf:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,120,152,0.4)}
+.btn-print{padding:0.9rem 2rem;background:white;color:var(--lilac-deep);border-radius:100px;text-decoration:none;font-weight:600;font-size:0.9rem;border:1.5px solid var(--lilac);transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.btn-print:hover{background:var(--lilac-light);border-color:var(--lilac-deep);transform:translateY(-2px)}
+
+@media print{
+  nav, .cv-actions{display:none}
+  .cv-container{max-width:100%;margin:0;box-shadow:none;border-radius:0}
+  body{background:white}
+}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .cv-container{margin-top:6rem;border-radius:12px}
+  .cv-header{padding:2rem 1.5rem}
+  .cv-body{padding:1.5rem}
+  .cv-name{font-size:1.8rem}
+  .cv-contact-info{gap:1rem;font-size:0.85rem}
+  .cv-skills{grid-template-columns:1fr}
+  .cv-actions{padding:1.5rem;gap:0.75rem}
+  .btn-download-pdf, .btn-print{padding:0.8rem 1.5rem;font-size:0.85rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Sevia.</div>
+  <ul class="nav-links">
+    <li><a href="index.html#hero" class="nav-back"><i class="bi bi-arrow-left"></i> Back</a></li>
+  </ul>
+</nav>
+
+<div class="cv-container">
+  <div class="cv-header">
+    <div class="cv-name">Sevia Dwi Yanti</div>
+    <div class="cv-title">Mobile Developer • Software Engineer</div>
+    <div class="cv-contact-info">
+      <span><i class="bi bi-geo-alt"></i> Sukabumi, Jawa Barat</span>
+      <span><i class="bi bi-envelope"></i> seviadwynt@gmail.com</span>
+      <span><i class="bi bi-telephone"></i> +62 812 3911 6946</span>
+    </div>
+  </div>
+
+  <div class="cv-body">
+    <!-- PROFESSIONAL SUMMARY -->
+    <div class="cv-section">
+      <div class="cv-section-title"><i class="bi bi-file-text"></i> Professional Summary</div>
+      <p class="cv-desc">Fresh graduate in Software Engineering Technology from IPB University with strong expertise in mobile application development using Kotlin and Flutter. Passionate about creating user-friendly, well-structured applications that solve real-world problems. Proven track record in UI/UX design, web development, and mobile app implementation with experience working in collaborative team environments.</p>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="cv-section">
+      <div class="cv-section-title"><i class="bi bi-mortarboard"></i> Education</div>
+      <div class="cv-entry">
+        <div class="cv-date">2021 — 2025</div>
+        <div class="cv-role">D4 Software Engineering Technology</div>
+        <div class="cv-place">Sekolah Vokasi, IPB University</div>
+        <div class="cv-desc">Specialized in software engineering, web development, and mobile application development with focus on clean code practices and user-centered design.</div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="cv-section">
+      <div class="cv-section-title"><i class="bi bi-briefcase"></i> Professional Experience</div>
+      
+      <div class="cv-entry">
+        <div class="cv-date">January 2025 — July 2025</div>
+        <div class="cv-role">UI/UX Developer</div>
+        <div class="cv-place">PT Amerta Indah Otsuka, Sukabumi</div>
+        <ul class="cv-desc">
+          <li>Led design and production of communication materials</li>
+          <li>Managed 7-member design team for multimedia projects</li>
+          <li>Created comprehensive design systems and brand guidelines</li>
+          <li>Delivered 20+ marketing collateral designs</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-date">July 2024 — December 2024</div>
+        <div class="cv-role">Web Developer</div>
+        <div class="cv-place">PT Anugrah Eka Gemilang</div>
+        <ul class="cv-desc">
+          <li>Designed STP Job Portal UI/UX using Figma</li>
+          <li>Built responsive frontend with Tailwind CSS and Angular</li>
+          <li>Developed backend services using Laravel</li>
+          <li>Implemented database design and optimization</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-date">February 2024 — July 2024</div>
+        <div class="cv-role">Mobile Developer</div>
+        <div class="cv-place">Cohort Bangkit Academy</div>
+        <ul class="cv-desc">
+          <li>Developed mobile applications using Kotlin from beginner to intermediate level</li>
+          <li>Built capstone project with complete wireframe to code implementation</li>
+          <li>Implemented MVVM architecture and design patterns</li>
+          <li>Collaborated with cross-functional teams in agile environment</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ORGANIZATIONAL EXPERIENCE -->
+    <div class="cv-section">
+      <div class="cv-section-title"><i class="bi bi-people"></i> Organizational Experience</div>
+      <div class="cv-entry">
+        <div class="cv-date">2021 — Present</div>
+        <div class="cv-role">Multimedia Division Member</div>
+        <div class="cv-place">Himavo Micro IT — Student Organization</div>
+        <ul class="cv-desc">
+          <li>3+ years of graphic design and digital marketing experience</li>
+          <li>Created visual content for organization events and promotions</li>
+          <li>Mentored junior members in design principles and tools</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TECHNICAL SKILLS -->
+    <div class="cv-section">
+      <div class="cv-section-title"><i class="bi bi-code"></i> Technical Skills</div>
+      <div class="cv-skills">
+        <div class="cv-skill-group">
+          <div class="cv-skill-group-title">Programming Languages</div>
+          <div class="cv-skill-list">
+            <span class="cv-skill-tag">Kotlin</span>
+            <span class="cv-skill-tag">Flutter</span>
+            <span class="cv-skill-tag">PHP</span>
+            <span class="cv-skill-tag">JavaScript</span>
+            <span class="cv-skill-tag">HTML/CSS</span>
+          </div>
+        </div>
+        <div class="cv-skill-group">
+          <div class="cv-skill-group-title">Frameworks & Tools</div>
+          <div class="cv-skill-list">
+            <span class="cv-skill-tag">Laravel</span>
+            <span class="cv-skill-tag">Angular</span>
+            <span class="cv-skill-tag">Android Studio</span>
+            <span class="cv-skill-tag">Git</span>
+            <span class="cv-skill-tag">MySQL</span>
+          </div>
+        </div>
+        <div class="cv-skill-group">
+          <div class="cv-skill-group-title">Design & UI/UX</div>
+          <div class="cv-skill-list">
+            <span class="cv-skill-tag">Figma</span>
+            <span class="cv-skill-tag">Adobe Illustrator</span>
+            <span class="cv-skill-tag">UI Design</span>
+            <span class="cv-skill-tag">UX Design</span>
+          </div>
+        </div>
+        <div class="cv-skill-group">
+          <div class="cv-skill-group-title">Other Skills</div>
+          <div class="cv-skill-list">
+            <span class="cv-skill-tag">Mobile Development</span>
+            <span class="cv-skill-tag">Web Development</span>
+            <span class="cv-skill-tag">Agile Methodology</span>
+            <span class="cv-skill-tag">Team Leadership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="cv-section">
+      <div class="cv-section-title"><i class="bi bi-folder"></i> Featured Projects</div>
+      
+      <div class="cv-entry">
+        <div class="cv-role">WearShare — Mobile Application</div>
+        <ul class="cv-desc">
+          <li>Clothing sharing mobile app built with Kotlin</li>
+          <li>Features: user authentication, item listing, booking system</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-role">STP Job Portal — Web Application</div>
+        <ul class="cv-desc">
+          <li>Job portal built with Laravel backend and Tailwind CSS frontend</li>
+          <li>Features: job listings, applications, user profiles</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-role">StoryApp — Mobile Application</div>
+        <ul class="cv-desc">
+          <li>Kotlin-based social storytelling Android app</li>
+          <li>Features: story creation, user feeds, commenting system</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- LANGUAGES & CERTIFICATIONS -->
+    <div class="cv-section">
+      <div class="cv-section-title"><i class="bi bi-award"></i> Languages & Certifications</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <div>
+          <div class="cv-skill-group-title">Languages</div>
+          <div class="cv-desc">
+            • Indonesian (Native)<br>
+            • English (Fluent)
+          </div>
+        </div>
+        <div>
+          <div class="cv-skill-group-title">Relevant Coursework</div>
+          <div class="cv-desc">
+            • Mobile Development with Kotlin<br>
+            • UI/UX Design Principles<br>
+            • Web Development Fundamentals
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cv-actions">
+    <a href="assets/img/cv/CV-Sevia-Dwi-Yanti.pdf" download="CV_Sevia_Dwi_Yanti.pdf" class="btn-download-pdf">
+      <i class="bi bi-download"></i> Download PDF
+    </a>
+    <button class="btn-print" onclick="window.print()">
+      <i class="bi bi-printer"></i> Print CV
+    </button>
+  </div>
+</div>
+
+</body>
+</html>

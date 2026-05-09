@@ -60,7 +60,6 @@ h1.name span{font-style:italic;background:linear-gradient(135deg,var(--pink-deep
 .hero-right{position:relative;z-index:2;display:flex;justify-content:center}
 .photo-frame{position:relative;width:340px}
 .photo-inner{width:100%;aspect-ratio:3/4;border-radius:2rem;overflow:hidden;border:3px solid white;box-shadow:0 20px 60px rgba(180,120,160,0.18);background:linear-gradient(135deg,var(--pink-light),var(--lilac-light));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--muted)}
-/* Jika ada foto, ganti div.photo-inner dengan <img src="assets/img/foto-kamu.jpg" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2rem;border:3px solid white;"/> */
 .photo-inner i{font-size:4rem;color:var(--pink)}
 .photo-inner span{font-size:0.82rem}
 .float-card{position:absolute;background:white;border-radius:16px;padding:1rem 1.25rem;box-shadow:0 8px 30px rgba(180,120,160,0.15);border:1px solid var(--border)}
@@ -120,12 +119,9 @@ h2.sec-title em{font-style:italic;color:var(--lilac-deep)}
 /* PORTFOLIO */
 #portfolio{background:var(--bg)}
 .porto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
-.porto-card{background:white;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.3s;cursor:pointer;box-shadow:0 2px 12px rgba(180,120,160,0.07)}
+.porto-card{background:white;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.3s;cursor:pointer;box-shadow:0 2px 12px rgba(180,120,160,0.07);text-decoration:none;display:block;color:inherit}
 .porto-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(180,120,160,0.16);border-color:var(--pink)}
 .porto-thumb{height:190px;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
-/* Untuk mengganti thumbnail dengan gambar asli:
-   Ganti <div class="porto-thumb pink">emoji</div>
-   dengan <img src="assets/img/portfolio/nama-gambar.png" style="width:100%;height:190px;object-fit:cover;"/> */
 .porto-thumb.pink{background:linear-gradient(135deg,var(--pink-light),#fce4ec)}
 .porto-thumb.lilac{background:linear-gradient(135deg,var(--lilac-light),#e8eaf6)}
 .porto-thumb.peach{background:linear-gradient(135deg,#fdebd0,#fce4d6)}
@@ -200,7 +196,7 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
     <div class="hero-btns">
       <a href="#portfolio" class="btn-fill">View My Work</a>
       <a href="#contact" class="btn-ghost">Get In Touch</a>
-      <a href="assets/cv-sevia.pdf" download="CV_Sevia_Dwi_Yanti.pdf" class="btn-download"><i class="bi bi-download"></i> Download CV</a>
+      <a href="cv.html" class="btn-download"><i class="bi bi-download"></i> View CV</a>
     </div>
     <div class="hero-socials">
       <a href="https://www.instagram.com/sevia.dwynt_/" class="soc" target="_blank"><i class="bi bi-instagram"></i></a>
@@ -211,9 +207,6 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
   <div class="hero-right">
     <div class="photo-frame">
       <div class="deco-ring"></div>
-      <!-- GANTI: hapus div.photo-inner di bawah, lalu taruh:
-           <img src="assets/img/foto-kamu.jpg" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2rem;border:3px solid white;box-shadow:0 20px 60px rgba(180,120,160,0.18);display:block;"/>
-      -->
       <div class="photo-inner">
         <i class="bi bi-person-circle"></i>
         <span style="font-size:0.8rem;color:var(--pink)">Ganti dengan fotomu 🌸</span>
@@ -315,6 +308,15 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
       <div class="col-title"><i class="bi bi-briefcase"></i> Experience</div>
       <div class="timeline">
         <div class="tl">
+          <div class="tl-date">Des 2025 — Jun 2026</div>
+          <div class="tl-role">Mobile Apps Developer</div>
+          <div class="tl-place">Maritim Muda Nusantara, Jakarta</div>
+          <ul class="tl-pts">
+            <li>Led design &amp; production of communication materials</li>
+            <li>Managed 7-member design team</li>
+          </ul>
+        </div>
+        <div class="tl">
           <div class="tl-date">Jan 2025 — Jul 2025</div>
           <div class="tl-role">UI/UX Developer</div>
           <div class="tl-place">PT Amerta Indah Otsuka, Sukabumi</div>
@@ -351,7 +353,6 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
   <div class="sec-label">My Work</div>
   <h2 class="sec-title">Selected <em>Projects</em></h2>
 
-  <!-- FILTER TABS -->
   <div class="porto-filters">
     <button class="pf-btn active" onclick="filterPorto('all', this)">All</button>
     <button class="pf-btn" onclick="filterPorto('mobile', this)">📱 Mobile</button>
@@ -360,38 +361,45 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
   </div>
 
   <div class="porto-grid" id="portoGrid">
+    <a href="portfolio-details.html?project=gymapp" class="porto-card" data-cat="mobile">
+      <img src="assets/img/portfolio/GymAppBaru.jpg" alt="GymApp" style="width:100%;height:190px;object-fit:cover;display:block;"/>
+      <div class="porto-body"><div class="porto-type">Mobile</div><div class="porto-name">GymApp</div></div>
+    </a>
+    <a href="portfolio-details.html?project=maritim-muda-connect" class="porto-card" data-cat="mobile">
+      <img src="assets/img/portfolio/MaritimMudaConnect.png" alt="Maritim Muda Connect" style="width:100%;height:190px;object-fit:cover;display:block;"/>
+      <div class="porto-body"><div class="porto-type">Mobile</div><div class="porto-name">Maritim Muda Connect</div></div>
+    </a>
     <a href="portfolio-details.html?project=wearshare" class="porto-card" data-cat="mobile">
       <img src="assets/img/portfolio/wearshare.png" alt="WearShare" style="width:100%;height:190px;object-fit:cover;display:block;"/>
-      <div class="porto-body"><div class="porto-type">Mobile</div><div class="porto-name">WearShare</div><div class="porto-desc">Clothing sharing mobile app built with Kotlin</div></div>
+      <div class="porto-body"><div class="porto-type">Mobile</div><div class="porto-name">WearShare</div></div>
     </a>
     <a href="portfolio-details.html?project=stp-job-portal" class="porto-card" data-cat="website">
       <img src="assets/img/portfolio/porto16.png" alt="STP Job Portal" style="width:100%;height:190px;object-fit:cover;display:block;"/>
-      <div class="porto-body"><div class="porto-type">Website</div><div class="porto-name">STP Job Portal</div><div class="porto-desc">Job portal built with Laravel &amp; Tailwind CSS</div></div>
+      <div class="porto-body"><div class="porto-type">Website</div><div class="porto-name">STP Job Portal</div></div>
     </a>
     <a href="portfolio-details.html?project=talasgo" class="porto-card" data-cat="website">
       <img src="assets/img/portfolio/talasGo.png" alt="TalasGo" style="width:100%;height:190px;object-fit:cover;display:block;"/>
-      <div class="porto-body"><div class="porto-type">Website</div><div class="porto-name">TalasGo</div><div class="porto-desc">Taro-based product marketplace web app</div></div>
+      <div class="porto-body"><div class="porto-type">Website</div><div class="porto-name">TalasGo</div></div>
     </a>
     <a href="portfolio-details.html?project=enmix" class="porto-card" data-cat="website">
       <img src="assets/img/portfolio/Enmix.png" alt="Enmix" style="width:100%;height:190px;object-fit:cover;display:block;"/>
-      <div class="porto-body"><div class="porto-type">Website</div><div class="porto-name">Enmix</div><div class="porto-desc">Environmental management platform</div></div>
+      <div class="porto-body"><div class="porto-type">Website</div><div class="porto-name">Enmix</div></div>
     </a>
     <a href="portfolio-details.html?project=storyapp" class="porto-card" data-cat="mobile">
       <img src="assets/img/portfolio/StoryApp.png" alt="StoryApp" style="width:100%;height:190px;object-fit:cover;display:block;"/>
-      <div class="porto-body"><div class="porto-type">Mobile</div><div class="porto-name">StoryApp</div><div class="porto-desc">Kotlin-based social storytelling Android app</div></div>
+      <div class="porto-body"><div class="porto-type">Mobile</div><div class="porto-name">StoryApp</div></div>
     </a>
-    <a href="portfolio-details.html
-    ?project=banjar-explorer" class="porto-card" data-cat="uiux">
+    <a href="portfolio-details.html?project=banjar-explorer" class="porto-card" data-cat="uiux">
       <img src="assets/img/portfolio/banjarexplorer.png" alt="Banjar Explorer" style="width:100%;height:190px;object-fit:cover;display:block;"/>
-      <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">Banjar Explorer</div><div class="porto-desc">Tourism UI/UX design for Banjar region</div></div>
+      <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">Banjar Explorer</div></div>
     </a>
     <a href="portfolio-details.html?project=e-voting" class="porto-card" data-cat="uiux">
       <img src="assets/img/portfolio/e-voting.png" alt="E-Voting" style="width:100%;height:190px;object-fit:cover;display:block;"/>
-      <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">E-Voting</div><div class="porto-desc">Digital voting interface design</div></div>
+      <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">E-Voting</div></div>
     </a>
     <a href="portfolio-details.html?project=e-recruitment" class="porto-card" data-cat="uiux">
       <img src="assets/img/portfolio/e-recruitment.png" alt="E-Recruitment" style="width:100%;height:190px;object-fit:cover;display:block;"/>
-      <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">E-Recruitment</div><div class="porto-desc">HR recruitment system UI design</div></div>
+      <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">E-Recruitment</div></div>
     </a>
   </div>
 </section>
