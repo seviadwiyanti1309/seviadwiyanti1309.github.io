@@ -98,6 +98,8 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
 .f-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
 .f-copy{font-size:0.78rem;color:var(--muted)}
 .f-socs{display:flex;gap:0.6rem}
+.soc{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:1rem;transition:all 0.2s;background:white}
+.soc:hover{border-color:var(--pink);color:var(--pink-deep)}
 
 @media(max-width:800px){
   section{padding:4rem 1.5rem}
@@ -139,7 +141,6 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
         <div class="project-tech" id="projectTech"></div>
         <div class="project-links">
           <a href="#" id="demoLink" class="btn-link" target="_blank">Github</a>
-          <a href="#" id="repoLink" class="btn-link secondary" target="_blank">View Code</a>
         </div>
       </div>
     </div>
@@ -159,13 +160,36 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
 
 <script>
 const projects = {
+  'gymapp': {
+    title: 'GymApp',
+    type: 'Mobile App',
+    desc: 'GymApp is a mobile application for fitness tracking and workout planning, built with Kotlin. It allows users to create custom workout routines, track their progress, and connect with other fitness enthusiasts. Features include user authentication, exercise database, progress analytics, and social sharing.',
+    tech: ['Kotlin', 'Android Studio', 'Firebase', 'Room DB'],
+    image: 'assets/img/portfolio/GymAppBaru.jpg',
+    thumb: '💪',
+    gallery: [],
+    demo: '#',
+    repo: '#'
+  },
+  'maritim-muda-connect': {
+    title: 'Maritim Muda Connect',
+    type: 'Mobile App',
+    desc: 'Maritim Muda Connect is a mobile application developed during internship at Maritim Muda Nusantara, Jakarta. The app connects young maritime professionals, provides industry news, event updates, and networking features to support the growth of Indonesia\'s maritime sector.',
+    tech: ['Kotlin', 'Android Studio', 'Firebase', 'REST API'],
+    image: 'assets/img/portfolio/MaritimMudaConnect.png',
+    thumb: '⚓',
+    gallery: [],
+    demo: '#',
+    repo: '#'
+  },
   'wearshare': {
     title: 'WearShare',
     type: 'Mobile App',
     desc: 'WearShare is a mobile application for clothing sharing, built with Kotlin. It allows users to rent out their unused clothes and accessories, promoting sustainable fashion and reducing waste. Features include user authentication, item listing, booking system, and payment integration.',
     tech: ['Kotlin', 'Android Studio', 'Firebase', 'Room DB'],
-    // Ganti path di bawah sesuai lokasi gambar kamu
     image: 'assets/img/portfolio/wearshare.png',
+    thumb: '👗',
+    gallery: [],
     demo: '#',
     repo: '#'
   },
@@ -175,6 +199,8 @@ const projects = {
     desc: 'A comprehensive job portal designed for STP (Specialized Training Program) participants. Built with Laravel backend and Tailwind CSS for frontend. Features job listings, application tracking, user profiles, and admin dashboard for managing postings.',
     tech: ['Laravel', 'Tailwind CSS', 'MySQL', 'PHP'],
     image: 'assets/img/portfolio/porto16.png',
+    thumb: '💼',
+    gallery: [],
     demo: '#',
     repo: '#'
   },
@@ -185,6 +211,7 @@ const projects = {
     tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
     image: 'assets/img/portfolio/talasGo.png',
     thumb: '🌿',
+    gallery: [],
     demo: '#',
     repo: '#'
   },
@@ -195,6 +222,7 @@ const projects = {
     tech: ['Laravel', 'Bootstrap', 'MySQL', 'Chart.js'],
     image: 'assets/img/portfolio/Enmix.png',
     thumb: '♻️',
+    gallery: [],
     demo: '#',
     repo: '#'
   },
@@ -205,6 +233,7 @@ const projects = {
     tech: ['Kotlin', 'Android Studio', 'Retrofit', 'Room DB'],
     image: 'assets/img/portfolio/StoryApp.png',
     thumb: '📖',
+    gallery: [],
     demo: '#',
     repo: '#'
   },
@@ -213,8 +242,9 @@ const projects = {
     type: 'UI/UX Design',
     desc: 'Tourism UI/UX design for the Banjar region. Created wireframes and prototypes for a mobile app that helps tourists discover local attractions, book tours, and navigate the area with interactive maps.',
     tech: ['Figma', 'Adobe XD', 'Prototyping'],
-    image: 'assets/img/banjar-explorer.png',
+    image: 'assets/img/portfolio/banjarexplorer.png',
     thumb: '🗺️',
+    gallery: [],
     demo: '#',
     repo: '#'
   },
@@ -225,19 +255,10 @@ const projects = {
     tech: ['Figma', 'Usability Testing', 'Wireframing'],
     image: 'assets/img/portfolio/e-voting.png',
     thumb: '🗳️',
+    gallery: [],
     demo: '#',
     repo: '#'
   },
-  'e-recruitment': {
-    title: 'E-Recruitment',
-    type: 'UI/UX Design',
-    desc: 'HR recruitment system UI design for streamlined hiring processes. Includes features for job posting, candidate tracking, interview scheduling, and analytics dashboard for HR teams.',
-    tech: ['Figma', 'User Research', 'Prototyping'],
-    image: 'assets/img/portfolio/e-recruitment.png',
-    thumb: '👥',
-    demo: '#',
-    repo: '#'
-  }
 };
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -246,24 +267,25 @@ const projectKey = urlParams.get('project');
 if (projects[projectKey]) {
   const project = projects[projectKey];
 
+  document.title = project.title + ' — Sevia Dwi Yanti';
   document.getElementById('projectType').textContent = project.type;
   document.getElementById('projectTitle').textContent = project.title;
   document.getElementById('projectDesc').textContent = project.desc;
 
-  // ✅ PERBAIKAN: Render gambar jika ada, fallback ke emoji
+  // Render gambar utama
   const thumbEl = document.getElementById('projectThumb');
   if (project.image) {
     const img = document.createElement('img');
     img.src = project.image;
     img.alt = project.title;
     img.onerror = function() {
-      // Jika gambar gagal load, tampilkan emoji sebagai fallback
-      thumbEl.textContent = project.thumb;
+      thumbEl.innerHTML = '';
+      thumbEl.textContent = project.thumb || '📁';
     };
     thumbEl.innerHTML = '';
     thumbEl.appendChild(img);
   } else {
-    thumbEl.textContent = project.thumb;
+    thumbEl.textContent = project.thumb || '📁';
   }
 
   // Tech tags
@@ -276,34 +298,36 @@ if (projects[projectKey]) {
   });
 
   // Links
-  document.getElementById('demoLink').href = project.demo;
-  document.getElementById('repoLink').href = project.repo;
+  document.getElementById('demoLink').href = project.demo || '#';
+  document.getElementById('repoLink').href = project.repo || '#';
 
-  // ✅ PERBAIKAN: Gallery dengan gambar, fallback ke emoji
+  // Gallery (hanya render jika ada isinya)
   const galleryContainer = document.getElementById('projectGallery');
-  project.gallery.forEach(src => {
-    const galleryItem = document.createElement('div');
-    galleryItem.className = 'gallery-item';
+  if (project.gallery && project.gallery.length > 0) {
+    project.gallery.forEach(src => {
+      const galleryItem = document.createElement('div');
+      galleryItem.className = 'gallery-item';ß
 
-    // Cek apakah src adalah path gambar atau emoji
-    if (src.startsWith('assets/') || src.startsWith('http') || src.startsWith('/')) {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = project.title;
-      img.onerror = function() {
-        galleryItem.textContent = project.thumb;
-      };
-      galleryItem.appendChild(img);
-    } else {
-      galleryItem.textContent = src; // emoji fallback
-    }
+      if (src.startsWith('assets/') || src.startsWith('http') || src.startsWith('/')) {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = project.title;
+        img.onerror = function() {
+          galleryItem.textContent = project.thumb || '📁';
+        };
+        galleryItem.appendChild(img);
+      } else {
+        galleryItem.textContent = src;
+      }
 
-    galleryContainer.appendChild(galleryItem);
-  });
+      galleryContainer.appendChild(galleryItem);
+    });
+  }
 
 } else {
   document.getElementById('projectTitle').textContent = 'Project Not Found';
   document.getElementById('projectDesc').textContent = 'The requested project could not be found.';
+  document.getElementById('projectThumb').textContent = '🔍';
 }
 </script>
 

@@ -59,9 +59,26 @@ h1.name span{font-style:italic;background:linear-gradient(135deg,var(--pink-deep
 /* HERO RIGHT */
 .hero-right{position:relative;z-index:2;display:flex;justify-content:center}
 .photo-frame{position:relative;width:340px}
-.photo-inner{width:100%;aspect-ratio:3/4;border-radius:2rem;overflow:hidden;border:3px solid white;box-shadow:0 20px 60px rgba(180,120,160,0.18);background:linear-gradient(135deg,var(--pink-light),var(--lilac-light));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--muted)}
-.photo-inner i{font-size:4rem;color:var(--pink)}
-.photo-inner span{font-size:0.82rem}
+
+/* ✅ FIXED: photo-inner sekarang tidak pakai flex, foto mengisi penuh */
+.photo-inner{
+  width:100%;
+  aspect-ratio:3/4;
+  border-radius:2rem;
+  overflow:hidden;
+  border:3px solid white;
+  box-shadow:0 20px 60px rgba(180,120,160,0.18);
+  position:relative;
+}
+.photo-inner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  border-radius:0;
+}
+
 .float-card{position:absolute;background:white;border-radius:16px;padding:1rem 1.25rem;box-shadow:0 8px 30px rgba(180,120,160,0.15);border:1px solid var(--border)}
 .float-card1{bottom:-20px;left:-30px}
 .float-card2{top:30px;right:-30px}
@@ -204,13 +221,16 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
       <a href="https://github.com/seviadwiyanti" class="soc" target="_blank"><i class="bi bi-github"></i></a>
     </div>
   </div>
+
   <div class="hero-right">
     <div class="photo-frame">
       <div class="deco-ring"></div>
+
+      <!-- ✅ FIXED: hapus <i> icon, foto langsung mengisi frame -->
       <div class="photo-inner">
-        <i class="bi bi-person-circle"></i>
-        <span style="font-size:0.8rem;color:var(--pink)">Ganti dengan fotomu 🌸</span>
+        <img src="assets/img/Fotosepia.jpeg" alt="Foto Profil">
       </div>
+
       <div class="float-card float-card1">
         <div class="fc-num">8+</div>
         <div class="fc-label">Projects Built</div>
@@ -397,10 +417,6 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
       <img src="assets/img/portfolio/e-voting.png" alt="E-Voting" style="width:100%;height:190px;object-fit:cover;display:block;"/>
       <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">E-Voting</div></div>
     </a>
-    <a href="portfolio-details.html?project=e-recruitment" class="porto-card" data-cat="uiux">
-      <img src="assets/img/portfolio/e-recruitment.png" alt="E-Recruitment" style="width:100%;height:190px;object-fit:cover;display:block;"/>
-      <div class="porto-body"><div class="porto-type">UI/UX</div><div class="porto-name">E-Recruitment</div></div>
-    </a>
   </div>
 </section>
 
@@ -430,13 +446,17 @@ function filterPorto(cat, btn) {
       <div class="cinfo"><div class="cinfo-icon"><i class="bi bi-envelope"></i></div><div><div class="cinfo-lbl">Email</div><div class="cinfo-val">seviadwynt@gmail.com</div></div></div>
       <div class="cinfo"><div class="cinfo-icon"><i class="bi bi-telephone"></i></div><div><div class="cinfo-lbl">Phone</div><div class="cinfo-val">+62 812 3911 6946</div></div></div>
     </div>
-    <div class="cform">
-      <div><label class="flabel">Your Name</label><input class="finput" type="text" placeholder="e.g. Budi Santoso"/></div>
-      <div><label class="flabel">Email</label><input class="finput" type="email" placeholder="budi@email.com"/></div>
-      <div><label class="flabel">Subject</label><input class="finput" type="text" placeholder="Project Inquiry"/></div>
-      <div><label class="flabel">Message</label><textarea class="finput" placeholder="Tell me about your project..."></textarea></div>
-      <button class="fsend"><i class="bi bi-send"></i> Send Message</button>
-    </div>
+    <form class="cform" action="https://formspree.io/f/mojrkbpz" method="POST">
+      <div><label class="flabel">Your Name</label>
+        <input class="finput" type="text" name="name" placeholder="e.g. Budi Santoso"/></div>
+      <div><label class="flabel">Email</label>
+        <input class="finput" type="email" name="email" placeholder="budi@email.com"/></div>
+      <div><label class="flabel">Subject</label>
+        <input class="finput" type="text" name="subject" placeholder="Project Inquiry"/></div>
+      <div><label class="flabel">Message</label>
+        <textarea class="finput" name="message" placeholder="Tell me about your project..."></textarea></div>
+      <button type="submit" class="fsend"><i class="bi bi-send"></i> Send Message</button>
+    </form>
   </div>
 </section>
 
