@@ -70,11 +70,39 @@ h2.sec-title em{font-style:italic;color:var(--lilac-deep)}
 .project-tech{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem}
 .tech-tag{background:var(--pink-light);color:var(--pink-deep);font-size:0.78rem;padding:5px 14px;border-radius:100px;font-weight:500;border:1px solid rgba(224,120,152,0.2)}
 .tech-tag.lilac{background:var(--lilac-light);color:var(--lilac-deep);border-color:rgba(139,122,201,0.2)}
-.project-links{display:flex;gap:1rem;margin-bottom:2rem}
-.btn-link{padding:0.7rem 2rem;background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));color:#fff;border-radius:100px;text-decoration:none;font-weight:600;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.25s;box-shadow:0 4px 20px rgba(224,120,152,0.3)}
-.btn-link:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(224,120,152,0.4)}
-.btn-link.secondary{background:white;color:var(--pink-deep);border:1.5px solid var(--pink)}
-.btn-link.secondary:hover{background:var(--pink-light);border-color:var(--pink-deep)}
+.project-links{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+
+/* BUTTONS */
+.btn-link{
+  display:inline-flex;
+  align-items:center;
+  gap:0.45rem;
+  padding:0.7rem 1.6rem;
+  border-radius:100px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:0.88rem;
+  border:none;
+  cursor:pointer;
+  transition:all 0.25s;
+}
+.btn-github{
+  background:linear-gradient(135deg,var(--pink-deep),var(--lilac-deep));
+  color:#fff;
+  box-shadow:0 4px 20px rgba(224,120,152,0.3);
+}
+.btn-github:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(224,120,152,0.4)}
+.btn-figma{
+  background:white;
+  color:var(--lilac-deep);
+  border:1.5px solid var(--lilac);
+}
+.btn-figma:hover{background:var(--lilac-light);border-color:var(--lilac-deep);transform:translateY(-2px)}
+.btn-link i{font-size:1rem}
+
+/* hidden utility */
+.hidden{display:none!important}
+
 .project-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:2rem}
 .gallery-item{
   height:150px;
@@ -139,9 +167,8 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
         <div class="project-title" id="projectTitle">Project Title</div>
         <div class="project-desc" id="projectDesc">Description here...</div>
         <div class="project-tech" id="projectTech"></div>
-        <div class="project-links">
-          <a href="#" id="demoLink" class="btn-link" target="_blank">Github</a>
-        </div>
+        <!-- Link buttons rendered dynamically -->
+        <div class="project-links" id="projectLinks"></div>
       </div>
     </div>
   </div>
@@ -159,6 +186,12 @@ footer{background:white;padding:2rem 4rem;border-top:1px solid var(--border);dis
 </footer>
 
 <script>
+// =====================================================================
+// DATA PROJECTS
+// Isi field:
+//   repo  → link GitHub project (isi '#' kalau belum ada / kosongkan)
+//   figma → link Figma (isi null atau hapus field-nya kalau tidak ada)
+// =====================================================================
 const projects = {
   'gymapp': {
     title: 'GymApp',
@@ -168,8 +201,8 @@ const projects = {
     image: 'assets/img/portfolio/GymAppBaru.jpg',
     thumb: '💪',
     gallery: [],
-    demo: '#',
-    repo: '#'
+    repo: 'https://github.com/MohFahmi27/gym_tracking',   
+    figma: null,                                         
   },
   'maritim-muda-connect': {
     title: 'Maritim Muda Connect',
@@ -179,8 +212,8 @@ const projects = {
     image: 'assets/img/portfolio/MaritimMudaConnect.png',
     thumb: '⚓',
     gallery: [],
-    demo: '#',
-    repo: '#'
+    repo: 'https://github.com/Maritim-Muda-Connect/MaritimMudaConnect',
+    figma: null,
   },
   'wearshare': {
     title: 'WearShare',
@@ -190,8 +223,7 @@ const projects = {
     image: 'assets/img/portfolio/wearshare.png',
     thumb: '👗',
     gallery: [],
-    demo: '#',
-    repo: '#'
+    figma: null,
   },
   'stp-job-portal': {
     title: 'STP Job Portal',
@@ -201,8 +233,8 @@ const projects = {
     image: 'assets/img/portfolio/porto16.png',
     thumb: '💼',
     gallery: [],
-    demo: '#',
-    repo: '#'
+    repo: 'https://github.com/seviadwiyanti/project_jobportal',
+    figma: null,
   },
   'talasgo': {
     title: 'TalasGo',
@@ -212,8 +244,8 @@ const projects = {
     image: 'assets/img/portfolio/talasGo.png',
     thumb: '🌿',
     gallery: [],
-    demo: '#',
-    repo: '#'
+    repo: 'https://github.com/seviadwiyanti/projectwebsiteTalasGO.git',
+    figma: null,
   },
   'enmix': {
     title: 'Enmix',
@@ -223,8 +255,7 @@ const projects = {
     image: 'assets/img/portfolio/Enmix.png',
     thumb: '♻️',
     gallery: [],
-    demo: '#',
-    repo: '#'
+    figma: null,
   },
   'storyapp': {
     title: 'StoryApp',
@@ -234,8 +265,8 @@ const projects = {
     image: 'assets/img/portfolio/StoryApp.png',
     thumb: '📖',
     gallery: [],
-    demo: '#',
-    repo: '#'
+    repo: 'https://github.com/seviadwiyanti/StoryApp',
+    figma: null,
   },
   'banjar-explorer': {
     title: 'Banjar Explorer',
@@ -245,8 +276,8 @@ const projects = {
     image: 'assets/img/portfolio/banjarexplorer.png',
     thumb: '🗺️',
     gallery: [],
-    demo: '#',
-    repo: '#'
+    repo: null,                                                        // ← tidak ada GitHub
+    figma: 'https://www.figma.com/file/xxxxx/Banjar-Explorer',        // ← ganti link Figma-mu
   },
   'e-voting': {
     title: 'E-Voting',
@@ -256,11 +287,14 @@ const projects = {
     image: 'assets/img/portfolio/e-voting.png',
     thumb: '🗳️',
     gallery: [],
-    demo: '#',
-    repo: '#'
+    repo: null,
+    figma: 'https://www.figma.com/proto/Y4hB00GFryoMkuXAbVxjmz/Tugas-SIP-Prak-7?node-id=2-112&starting-point-node-id=2%3A61&t=QCnXjB2bvkr0O2I9-1',               // ← ganti link Figma-mu
   },
 };
 
+// =====================================================================
+// RENDER
+// =====================================================================
 const urlParams = new URLSearchParams(window.location.search);
 const projectKey = urlParams.get('project');
 
@@ -272,7 +306,7 @@ if (projects[projectKey]) {
   document.getElementById('projectTitle').textContent = project.title;
   document.getElementById('projectDesc').textContent = project.desc;
 
-  // Render gambar utama
+  // Gambar utama
   const thumbEl = document.getElementById('projectThumb');
   if (project.image) {
     const img = document.createElement('img');
@@ -297,24 +331,52 @@ if (projects[projectKey]) {
     techContainer.appendChild(tag);
   });
 
-  // Links
-  document.getElementById('demoLink').href = project.demo || '#';
-  document.getElementById('repoLink').href = project.repo || '#';
+  // ── Tombol link (GitHub & Figma) ──────────────────────────────────
+  const linksContainer = document.getElementById('projectLinks');
 
-  // Gallery (hanya render jika ada isinya)
+  // Tombol GitHub — hanya muncul kalau repo diisi (bukan null/'#')
+  if (project.repo && project.repo !== '#') {
+    const ghBtn = document.createElement('a');
+    ghBtn.href = project.repo;
+    ghBtn.target = '_blank';
+    ghBtn.rel = 'noopener noreferrer';
+    ghBtn.className = 'btn-link btn-github';
+    ghBtn.innerHTML = '<i class="bi bi-github"></i> GitHub';
+    linksContainer.appendChild(ghBtn);
+  }
+
+  // Tombol Figma — hanya muncul kalau figma diisi (bukan null)
+  if (project.figma && project.figma !== '#') {
+    const figmaBtn = document.createElement('a');
+    figmaBtn.href = project.figma;
+    figmaBtn.target = '_blank';
+    figmaBtn.rel = 'noopener noreferrer';
+    figmaBtn.className = 'btn-link btn-figma';
+    // Figma logo SVG inline (ringan, tidak perlu icon library)
+    figmaBtn.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+        <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" fill="#8b7ac9"/>
+        <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 0 1-19 0z" fill="#8b7ac9"/>
+        <path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19H19z" fill="#8b7ac9"/>
+        <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="#b9a9e8"/>
+        <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="#a89dd8"/>
+      </svg>
+      Figma`;
+    linksContainer.appendChild(figmaBtn);
+  }
+
+  // Gallery
   const galleryContainer = document.getElementById('projectGallery');
   if (project.gallery && project.gallery.length > 0) {
     project.gallery.forEach(src => {
       const galleryItem = document.createElement('div');
-      galleryItem.className = 'gallery-item';ß
+      galleryItem.className = 'gallery-item';
 
       if (src.startsWith('assets/') || src.startsWith('http') || src.startsWith('/')) {
         const img = document.createElement('img');
         img.src = src;
         img.alt = project.title;
-        img.onerror = function() {
-          galleryItem.textContent = project.thumb || '📁';
-        };
+        img.onerror = function() { galleryItem.textContent = project.thumb || '📁'; };
         galleryItem.appendChild(img);
       } else {
         galleryItem.textContent = src;
